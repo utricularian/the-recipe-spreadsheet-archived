@@ -24,3 +24,21 @@ blocks:
         commands:
           - checkout
           - 'echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin'
+  - name: Tests
+    task:
+      secrets:
+        - name: dockerhub
+      prologue:
+        commands:
+          - 'checkout '
+          - cp env-example .env
+          - cat docker-compose.test.yml | envsubst | tee docker-compose.yml
+          - 'echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin'
+          - 'docker pull $DOCKER_USERNAME/the-recipe-spreadsheet:latest || true'
+          - 'docker-compose run trs rake db:reset'
+          - 'docker-compose run trs rake db:migrate'
+          - 'docker-compose run trs rake db:test:prepare'
+      jobs:
+        - name: Rails test
+          commands:
+            - docker-compose run trs rspec
