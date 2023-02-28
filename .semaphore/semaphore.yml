@@ -13,6 +13,11 @@ blocks:
             - 'docker pull $DOCKER_USERNAME/the-recipe-spreadsheet:latest || true'
             - 'docker build -t $DOCKER_USERNAME/the-recipe-spreadsheet:latest --cache-from=$DOCKER_USERNAME/the-recipe-spreadsheet:latest -f Dockerfile.production .'
             - 'docker push $DOCKER_USERNAME/the-recipe-spreadsheet:latest'
+        - name: Build nginx
+          commands:
+            - 'docker pull $DOCKER_USERNAME/the-recipe-spreadsheet-nginx:latest || true'
+            - 'docker build -t $DOCKER_USERNAME/the-recipe-spreadsheet-nginx:latest --cache-from=$DOCKER_USERNAME/the-recipe-spreadsheet-nginx:latest -f Dockerfile.nginx .'
+            - 'docker push $DOCKER_USERNAME/the-recipe-spreadsheet-nginx:latest'
       secrets:
         - name: dockerhub
       prologue:
