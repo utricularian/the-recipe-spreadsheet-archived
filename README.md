@@ -12,3 +12,7 @@ While the containers are up, you can run tests.
 
 Dev environment secrets should be in `.env`. Get them from someone you trust.
 
+Containers are stored under https://hub.docker.com/repositories/utricularian
+
+CI/CD is run with Semaphore at https://utricularian.semaphoreci.com/projects/the-recipe-spreadsheet
+
