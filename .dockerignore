@@ -1,0 +1,7 @@
+.git
+.dockerignore
+.env
+trs/node_modules/
+trs/vendor/bundle/
+trs/tmp/
+
