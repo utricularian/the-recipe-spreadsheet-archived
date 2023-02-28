@@ -1,0 +1,10 @@
+# You would typically use rake secret to generate a secure token. It is
+# critical that you keep this value private in production.
+SECRET_TOKEN=9953ff208fbae9e32d7da127b4b0b40942ebe0faae1b5f65cf0d98599de7b1fb
+
+WORKER_PROCESSES=1
+LISTEN_ON=0.0.0.0:8010
+DATABASE_URL=postgresql://trs:test_db_password@postgres:5432/trs?encoding=utf8&pool=5&timeout=5000
+CACHE_URL=redis://redis:6379/0
+JOB_WORKER_URL=redis://redis:6379/0
+
